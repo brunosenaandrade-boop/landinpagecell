@@ -464,7 +464,7 @@ export default function LandingPage() {
           <div className="mx-auto mt-16 max-w-5xl">
             <div className="hero-screenshot rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-gray-200">
               <Image
-                src="/screenshots/dashboard.png"
+                src="/screenshots/dashboard.webp"
                 alt="Dashboard do CellFlow - Visão geral com KPIs de vendas, OS e faturamento"
                 width={1440}
                 height={900}
@@ -565,7 +565,7 @@ export default function LandingPage() {
               SCREENSHOTS[activeScreenshot].id === "acompanhamento" ? "max-w-sm mx-auto" : ""
             }`}>
               <Image
-                src={`/screenshots/${SCREENSHOTS[activeScreenshot].id}.png`}
+                src={`/screenshots/${SCREENSHOTS[activeScreenshot].id}.webp`}
                 alt={SCREENSHOTS[activeScreenshot].title}
                 width={SCREENSHOTS[activeScreenshot].id === "acompanhamento" ? 430 : 1440}
                 height={SCREENSHOTS[activeScreenshot].id === "acompanhamento" ? 932 : 900}
