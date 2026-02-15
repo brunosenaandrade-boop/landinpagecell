@@ -26,10 +26,14 @@ import {
   Cog,
   Rocket,
   Star,
+  MessageCircle,
 } from "lucide-react";
 
 const CTA_URL =
   "https://cellflow.com.br/cadastro?utm_source=lp&utm_medium=cta&utm_campaign=landing";
+
+const WHATSAPP_NUMBER = "5500000000000"; // TODO: trocar pelo número real
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Quero saber mais sobre o CellFlow.")}`;
 
 /* ============================================================
    DATA
@@ -173,7 +177,7 @@ const BENEFITS = [
     icon: Shield,
     title: "Seus dados ficam seguros",
     description:
-      "Infraestrutura Supabase com criptografia, backups automáticos e isolamento por empresa.",
+      "Infraestrutura em nuvem com criptografia, backups automáticos e isolamento total por empresa.",
   },
   {
     icon: Infinity,
@@ -240,7 +244,7 @@ const FAQ_ITEMS = [
   {
     question: "Quais formas de pagamento são aceitas?",
     answer:
-      "PIX, cartão de crédito e boleto bancário. O plano custa R$ 150/mês (12x no cartão) ou R$ 1.800 à vista via PIX/boleto.",
+      "PIX e cartão de crédito. O plano custa R$ 150/mês (12x no cartão) ou R$ 1.800 à vista via PIX.",
   },
   {
     question: "Posso cancelar a qualquer momento?",
@@ -255,7 +259,7 @@ const FAQ_ITEMS = [
   {
     question: "Meus dados ficam seguros?",
     answer:
-      "Sim. Usamos Supabase (PostgreSQL) com criptografia, backups automáticos e isolamento total por empresa. Cada loja acessa apenas seus próprios dados.",
+      "Sim. Usamos infraestrutura em nuvem com criptografia, backups automáticos e isolamento total por empresa. Cada loja acessa apenas seus próprios dados.",
   },
   {
     question: "Como funciona o programa de indicação?",
@@ -472,14 +476,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ==================== SOCIAL PROOF / NUMBERS ==================== */}
+      {/* ==================== SOCIAL PROOF / HIGHLIGHTS ==================== */}
       <section className="border-y border-gray-100 bg-white py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             {[
-              { value: "150+", label: "Lojas usando o CellFlow" },
-              { value: "5.000+", label: "Ordens de serviço criadas" },
-              { value: "10.000+", label: "Vendas registradas" },
+              { value: "100%", label: "Online — sem instalação" },
+              { value: "7 dias", label: "Grátis para testar" },
+              { value: "Ilimitado", label: "No plano anual" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl font-extrabold text-primary sm:text-4xl">
@@ -808,6 +812,17 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ==================== WHATSAPP FLOATING BUTTON ==================== */}
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Fale conosco pelo WhatsApp"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#1ebe5b] transition-colors"
+      >
+        <MessageCircle className="h-7 w-7" />
+      </a>
+
       {/* ==================== FOOTER ==================== */}
       <footer className="bg-gray-900 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -842,12 +857,25 @@ export default function LandingPage() {
               >
                 Privacidade
               </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                Contato
+              </a>
             </div>
           </div>
 
           <div className="mt-8 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} CellFlow. Todos os direitos
-            reservados.
+            <p>
+              &copy; {new Date().getFullYear()} CellFlow. Todos os direitos
+              reservados.
+            </p>
+            <p className="mt-2">
+              CNPJ: 00.000.000/0001-00 {/* TODO: trocar pelo CNPJ real */}
+            </p>
           </div>
         </div>
       </footer>
