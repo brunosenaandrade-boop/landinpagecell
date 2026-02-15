@@ -32,21 +32,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Screenshot placeholder styling */
-.screenshot-placeholder {
-  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 50%, #e0f2fe 100%);
-  border: 2px dashed #93c5fd;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #3b82f6;
-  font-weight: 500;
-  font-size: 14px;
-  text-align: center;
-  padding: 2rem;
-}
-
 /* Perspective effect for hero screenshot */
 .hero-screenshot {
   transform: perspective(1200px) rotateY(-5deg) rotateX(3deg);

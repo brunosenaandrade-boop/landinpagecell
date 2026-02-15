@@ -25,7 +25,6 @@ import {
   Store,
   Cog,
   Rocket,
-  Monitor,
   Star,
 } from "lucide-react";
 
@@ -279,28 +278,6 @@ const FAQ_ITEMS = [
    COMPONENTS
    ============================================================ */
 
-function ScreenshotPlaceholder({
-  label,
-  className = "",
-}: {
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`screenshot-placeholder aspect-video w-full ${className}`}
-    >
-      <div className="flex flex-col items-center gap-2">
-        <Monitor className="h-8 w-8 opacity-60" />
-        <span>Screenshot: {label}</span>
-        <span className="text-xs opacity-60">
-          Substitua por /screenshots/{label.toLowerCase().replace(/\s/g, "")}.png
-        </span>
-      </div>
-    </div>
-  );
-}
-
 function FAQItem({
   question,
   answer,
@@ -482,7 +459,14 @@ export default function LandingPage() {
           {/* Hero Screenshot */}
           <div className="mx-auto mt-16 max-w-5xl">
             <div className="hero-screenshot rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-gray-200">
-              <ScreenshotPlaceholder label="Dashboard" className="rounded-xl" />
+              <Image
+                src="/screenshots/dashboard.png"
+                alt="Dashboard do CellFlow - Visão geral com KPIs de vendas, OS e faturamento"
+                width={1440}
+                height={900}
+                className="rounded-xl w-full h-auto"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -573,10 +557,15 @@ export default function LandingPage() {
 
           {/* Active screenshot */}
           <div className="mx-auto mt-8 max-w-4xl">
-            <div className="rounded-2xl bg-white p-2 shadow-xl ring-1 ring-gray-200">
-              <ScreenshotPlaceholder
-                label={SCREENSHOTS[activeScreenshot].title}
-                className="min-h-[300px] sm:min-h-[400px] rounded-xl"
+            <div className={`rounded-2xl bg-white p-2 shadow-xl ring-1 ring-gray-200 ${
+              SCREENSHOTS[activeScreenshot].id === "acompanhamento" ? "max-w-sm mx-auto" : ""
+            }`}>
+              <Image
+                src={`/screenshots/${SCREENSHOTS[activeScreenshot].id}.png`}
+                alt={SCREENSHOTS[activeScreenshot].title}
+                width={SCREENSHOTS[activeScreenshot].id === "acompanhamento" ? 430 : 1440}
+                height={SCREENSHOTS[activeScreenshot].id === "acompanhamento" ? 932 : 900}
+                className="rounded-xl w-full h-auto"
               />
             </div>
             <div className="mt-4 text-center">
