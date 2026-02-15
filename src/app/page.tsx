@@ -274,7 +274,7 @@ const FAQ_ITEMS = [
   {
     question: "Consigo importar dados de outro sistema?",
     answer:
-      "No momento não temos importação automática, mas o cadastro de produtos e clientes é rápido. Se você tiver uma planilha, nosso suporte pode ajudar na migração.",
+      "No momento não temos importação automática, mas o cadastro de produtos e clientes é rápido e intuitivo. A maioria dos lojistas cadastra tudo em menos de 1 hora.",
   },
 ];
 
