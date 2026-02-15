@@ -10,7 +10,7 @@ const EMAIL = "teste.prints@cellflow.com.br";
 const PASSWORD = "Teste@123456";
 const TRACKING_CODE = "F6HDYNBN";
 
-const VIEWPORT = { width: 1440, height: 900 };
+const VIEWPORT = { width: 1440, height: 960 };
 
 async function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
@@ -119,56 +119,7 @@ async function main() {
   });
   console.log("   ✓ pdv.png saved\n");
 
-  // ===================== ACOMPANHAMENTO =====================
-  console.log("3/3 Capturing Acompanhamento...");
-
-  // Try the public tracking page in a new context (no cookies)
-  const publicContext = await browser.newContext({
-    viewport: { width: 430, height: 932 },
-    deviceScaleFactor: 2,
-    locale: "pt-BR",
-    timezoneId: "America/Sao_Paulo",
-    ignoreHTTPSErrors: true,
-  });
-  const publicPage = await publicContext.newPage();
-
-  // Try the URL - if it 404s, try with www or different path
-  let acompanhamentoOk = false;
-
-  const urls = [
-    `${BASE_URL}/acompanhar/${TRACKING_CODE}`,
-    `${BASE_URL}/acompanhamento/${TRACKING_CODE}`,
-    `${BASE_URL}/os/${TRACKING_CODE}`,
-  ];
-
-  for (const url of urls) {
-    console.log(`   Trying: ${url}`);
-    await publicPage.goto(url, { waitUntil: "networkidle", timeout: 15000 }).catch(() => {});
-    await sleep(3000);
-
-    // Check if it's a 404
-    const is404 = await publicPage.locator('text=404').isVisible().catch(() => false);
-    const hasContent = await publicPage.locator('text=Motorola, text=Moto G52, text=em_andamento, text=Em Andamento, text=OS').first().isVisible().catch(() => false);
-
-    if (!is404 || hasContent) {
-      acompanhamentoOk = true;
-      break;
-    }
-  }
-
-  if (!acompanhamentoOk) {
-    console.log("   Public page returned 404 on all routes.");
-    console.log("   Taking screenshot of whatever is visible...");
-  }
-
-  await publicPage.screenshot({
-    path: join(SCREENSHOTS_DIR, "acompanhamento.png"),
-    fullPage: true,
-    type: "png",
-  });
-  console.log("   ✓ acompanhamento.png saved\n");
-
-  await publicContext.close();
+  // Acompanhamento é capturado pelo script v1 (take-screenshots.mjs)
   await browser.close();
 
   console.log("═══════════════════════════════════════");
