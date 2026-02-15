@@ -874,7 +874,7 @@ export default function LandingPage() {
               reservados.
             </p>
             <p className="mt-2">
-              CNPJ: 26.360.862/0001-91
+              CNPJ: 26.630.862/0001-91
             </p>
           </div>
         </div>
