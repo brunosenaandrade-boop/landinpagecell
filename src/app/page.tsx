@@ -32,7 +32,7 @@ import {
 const CTA_URL =
   "https://cellflow.com.br/cadastro?utm_source=lp&utm_medium=cta&utm_campaign=landing";
 
-const WHATSAPP_NUMBER = "5500000000000"; // TODO: trocar pelo número real
+const WHATSAPP_NUMBER = "5548998649898";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Quero saber mais sobre o CellFlow.")}`;
 
 /* ============================================================
@@ -874,7 +874,7 @@ export default function LandingPage() {
               reservados.
             </p>
             <p className="mt-2">
-              CNPJ: 00.000.000/0001-00 {/* TODO: trocar pelo CNPJ real */}
+              CNPJ: 26.360.862/0001-91
             </p>
           </div>
         </div>
