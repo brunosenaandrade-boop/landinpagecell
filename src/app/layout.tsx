@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 
@@ -8,6 +8,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lp.cellflow.com.br"),
   title: "CellFlow — Sistema para Assistência Técnica e Loja de Celular",
   description:
     "Gerencie ordens de serviço, vendas, estoque, caixa e clientes em um só lugar. Sistema completo para lojas de celular e assistência técnica. 7 dias grátis.",
@@ -19,11 +20,14 @@ export const metadata: Metadata = {
     "gestão loja celular",
     "controle estoque celular",
     "sistema OS celular",
+    "software assistência técnica",
+    "gestão assistência técnica",
+    "sistema para loja de celular",
     "CellFlow",
   ],
   authors: [{ name: "CellFlow" }],
   creator: "CellFlow",
-  metadataBase: new URL("https://lp.cellflow.com.br"),
+  publisher: "CellFlow",
   alternates: {
     canonical: "https://lp.cellflow.com.br",
   },
@@ -54,7 +58,27 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icons/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/icons/icon.svg" }],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#3b82f6",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
