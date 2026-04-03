@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Wrench,
@@ -319,9 +319,22 @@ function FAQItem({
    PAGE
    ============================================================ */
 
+function fbtrack(event: string, params?: Record<string, unknown>) {
+  if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    window.fbq("track", event, params);
+  }
+}
+
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeScreenshot, setActiveScreenshot] = useState(0);
+
+  useEffect(() => {
+    fbtrack("ViewContent", {
+      content_name: "landing_page",
+      content_category: "landing",
+    });
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -363,6 +376,7 @@ export default function LandingPage() {
             </a>
             <a
               href={CTA_URL}
+              onClick={() => fbtrack("Lead", { content_name: "cta_header", content_category: "signup_cta" })}
               className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark transition-colors"
             >
               Começar Grátis
@@ -406,6 +420,7 @@ export default function LandingPage() {
               </a>
               <a
                 href={CTA_URL}
+                onClick={() => fbtrack("Lead", { content_name: "cta_header_mobile", content_category: "signup_cta" })}
                 className="mt-1 rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white"
               >
                 Começar Grátis
@@ -442,6 +457,7 @@ export default function LandingPage() {
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <a
                 href={CTA_URL}
+                onClick={() => fbtrack("Lead", { content_name: "cta_hero", content_category: "signup_cta" })}
                 className="cta-pulse inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-bold text-white shadow-lg hover:bg-primary-dark transition-all"
               >
                 Começar Grátis por 7 Dias
@@ -698,6 +714,7 @@ export default function LandingPage() {
 
               <a
                 href={CTA_URL}
+                onClick={() => fbtrack("Lead", { content_name: "cta_pricing", content_category: "signup_cta" })}
                 className="mt-8 block w-full rounded-xl bg-primary py-4 text-center text-base font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
               >
                 Começar Grátis por 7 Dias
@@ -804,6 +821,7 @@ export default function LandingPage() {
           </p>
           <a
             href={CTA_URL}
+            onClick={() => fbtrack("Lead", { content_name: "cta_final", content_category: "signup_cta" })}
             className="mt-10 inline-flex items-center gap-2 rounded-xl bg-white px-10 py-4 text-base font-bold text-primary shadow-xl hover:bg-gray-50 transition-colors"
           >
             Criar conta grátis
@@ -818,6 +836,7 @@ export default function LandingPage() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Fale conosco pelo WhatsApp"
+        onClick={() => fbtrack("Lead", { content_name: "whatsapp_floating", content_category: "contact" })}
         className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#1ebe5b] transition-colors"
       >
         <MessageCircle className="h-7 w-7" />
@@ -861,6 +880,7 @@ export default function LandingPage() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => fbtrack("Lead", { content_name: "whatsapp_footer", content_category: "contact" })}
                 className="hover:text-white transition-colors"
               >
                 Contato
