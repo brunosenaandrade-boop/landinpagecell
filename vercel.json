@@ -1,6 +1,13 @@
 {
   "framework": "nextjs",
   "regions": ["gru1"],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://www.cellflow.com.br/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
