@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/:path*",
-      "destination": "https://www.cellflow.com.br/:path*",
+      "destination": "https://cellflow.com.br/:path*",
       "permanent": true
     }
   ],

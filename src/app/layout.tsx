@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   creator: "CellFlow",
   publisher: "CellFlow",
   alternates: {
-    canonical: "https://www.cellflow.com.br/",
+    canonical: "https://cellflow.com.br/",
   },
   openGraph: {
     type: "website",
